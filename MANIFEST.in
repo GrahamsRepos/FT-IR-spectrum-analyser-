@@ -1,0 +1,3 @@
+include Start/modules/Zones.jpg
+include Start/SampleSpectra/Interferograms/*.csv
+include Start/SampleSpectra/Spectra/*.csv
