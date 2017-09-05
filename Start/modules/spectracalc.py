@@ -36,7 +36,7 @@ class spectrafrominf:
         self.apodise = []
         self.apodiseI = []
         for i in range(len(self.yintensity)):
-            self.apodise.append(0.5 * (1 + math.cos((math.pi * (self.xshift[i])) / self.maxval)))
+            self.apodise.append((0.54 + 0.46*math.cos((math.pi * (self.xshift[i])) / self.maxval)))
         for ii in range(len(self.apodise)):
             self.apodiseI.append((self.yintensity[ii]) * (self.apodise[ii]))
 
