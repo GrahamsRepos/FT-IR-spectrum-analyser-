@@ -170,7 +170,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.localy = self.peakcalc.returnvalues("ymin")
             self.plotcurves_2(self.peakcalc.returnvalues("xval"), self.peakcalc.returnvalues("yval"), self.localx,
                               self.localy)
-
+        #Curve plotting functions for the peak-picking tab
     def plotcurves_2(self, x, y, xmin, ymin):
         self.Plot1_2.setMouseEnabled(x=True, y=True)
         self.Plot1_2.setLabel('left', "Relative Intensity")
@@ -181,11 +181,11 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.Plot1_2.clear()
         self.Plot1_2.plot(x, y, pen='r')
         self.Plot1_2.plot(xmin, ymin, pen=None, symbol='+', symbolSize=5, clickable=True)
-        self.proxy = pg.SignalProxy(self.Plot1_2.scene().sigMouseClicked, rateLimit=60, slot=self.ClickPoint)
+        self.proxy = pg.SignalProxy(self.Plot1_2.scene().sigMouseClicked, rateLimit=60, slot=self.ClickPoint) #Event listner for the mouseclick event on data-points
         # self.Plot1_2.scene().sigMouseClicked.connect(self.addPoint)
 
     def ClickPoint(self, event):
-        self.position = event[0].pos().x()
+        self.position = event[0].pos().x() #Returns Mouseclick position terms of plot x,y coordinates
         self.positiony = event[0].pos().y()
         self.locallocalx = self.localx
         self.locallocaly = self.localy
