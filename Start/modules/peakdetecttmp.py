@@ -14,7 +14,7 @@ class calculate:
             self.xwave.append(float(row[0]))
             self.yintensity.append(float(row[1]))
         for i in range(len(self.yintensity)):
-            self.yfract.append(self.yintensity[i] / max(self.yintensity))
+            self.yfract.append((self.yintensity[i]-min(self.yintensity)) / (max(self.yintensity)-min(self.yintensity)))
             print "Wavenuber:", self.xwave[i], "Rel. Intensity:", self.yfract[i]
 
     def dataloadapp(self, x, y):
@@ -27,7 +27,7 @@ class calculate:
             self.xwave.append(self.xin[a])
             self.yintensity.append(self.yin[a])
         for i in range(len(self.yintensity)):
-            self.yfract.append(self.yintensity[i] / max(self.yintensity))
+            self.yfract.append((self.yintensity[i] - min(self.yintensity)) / (max(self.yintensity) - min(self.yintensity)))
             print "Wavenuber:", self.xwave[i], "Rel. Intensity:", self.yfract[i]
 
     def differential(self):
