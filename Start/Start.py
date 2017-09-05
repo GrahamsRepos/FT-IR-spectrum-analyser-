@@ -130,8 +130,10 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.Plot2_1.invertX(True)
             self.Plot1_1.invertX(False)
         self.Plot1_1.clear()
+        self.Plot1_1.showGrid(x=True, y=True)
         self.Plot1_1.plot(x, y, pen='b')
         self.Plot2_1.clear()
+        self.Plot2_1.showGrid(x=True, y=True)
         self.Plot2_1.plot(x2, y2, pen='r')
 
         ##2->Functions associated with peak picking tab
