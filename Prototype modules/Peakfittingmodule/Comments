@@ -1,0 +1,1 @@
+The peak detection works best for simpler spectra with excess noise and narrower weak signals removed. A suitable spectra can be obtained by reverse fourier transforming an existing spectra and then using the inteferogram to generated a more deconvoluted spectra for the script. 
