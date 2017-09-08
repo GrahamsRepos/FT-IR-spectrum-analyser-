@@ -72,7 +72,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.xsp = self.spect.returnvalspec('x')
             self.xdata = self.spect.returnvalspec('x')
             self.ysp = self.spect.returnvalspec('y')
-            self.ydata = self.spect.returnvalspec('y')
+            self.ydata = self.spect.returnvalspec('yadjusted')
             self.xinf = self.spect.returnvalinf('x')
             self.yinf = self.spect.returnvalinf('Ia')
             self.plotcurves_1(self.xinf, self.yinf, self.xsp, self.ysp, "Shift(cm)", "Relative Intensity",
@@ -102,7 +102,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def savefile(self, name, dlm):
         if self.checkBoxspectra_1.isChecked():
             self.datawrite(name, dlm)
-        if self.checkBoxspectra_1.isChecked():
+        if self.checkBoxinf_1.isChecked():
             self.datawrite(name, dlm)
 
     def datawrite(self, name, dlm):
