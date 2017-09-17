@@ -48,6 +48,8 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def getfile(self):
         self.calculateButton_1.setEnabled(True)
         self.fname = QFileDialog.getOpenFileName(self, 'Open file', '\\', "csv (*.csv *.CSV)")
+        char = "Current File: " + str(self.fname.split('/',1)[-1])
+        self.label_filename_1.setText(char)
         # Import spectra and calculate
 
     def setdelimiter(self):
@@ -146,6 +148,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def importdata_2(self):
         # Check datasource
         if self.radioButtonFrmclc_2.isChecked():
+            self.pushButtonSave_2.setEnabled(True)
             if self.checkBoxinf_1.isChecked():
                 self.peakcalc.dataloadfile(self.fname, self.delimiter)
                 self.peakcalc.differential()
@@ -163,6 +166,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 self.plotcurves_2(self.peakcalc.returnvalues("xval"), self.peakcalc.returnvalues("yval"), self.localx,
                                   self.localy)
         elif self.radioButtonFrmcsv_2.isChecked():
+            self.pushButtonSave_2.setEnabled(True)
             self.getfile_2()
             self.peakcalc.differential()
             self.peakcalc.detectminima()
