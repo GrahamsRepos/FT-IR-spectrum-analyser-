@@ -22,7 +22,8 @@ class spectrafrominf:
             # 2 Calculation of the resolution in 1/cm and sampling interval cm of the instrument
 
     def __spectraparameters__(self):
-        self.sampint = 0.00006328
+
+        self.sampint = 0.000006328
         ##        self.resolution = float(1/ ((self.sampint)*len(self.xshift)))
         self.resolution = 16.0
 
@@ -66,6 +67,7 @@ class spectrafrominf:
         self.adjusted = 0
         for i in range(1, len(self.xshift)):
             self.test = (float(self.apodiseI[i])) * (math.cos((2 * math.pi) * testwave * self.xshift[i]))
+            #self.currentintensity += (float(self.apodiseI[i])) *(math.cos((2 * math.pi) * testwave * self.xshift[i]) - (math.sin((2 * math.pi) * testwave * self.xshift[i])))
             self.currentintensity += (float(self.apodiseI[i])) * (math.cos((2 * math.pi) * testwave * self.xshift[i]))
             self.adjusted = ((self.currentintensity - self.apodiseI[0]) / (self.apodiseI[0]))
 
@@ -87,8 +89,8 @@ class spectrafrominf:
                 self.transm.append(0.0)
                 print self.waverg[i], " ", self.transm[i]
         for i in range(len(self.transm)):
-            self.perctransm.append((self.transm[i] - min(self.transm)) / (max(self.transm) - min(self.transm)))
-            self.perctransminv.append(1 - (self.transm[i] / max(self.transm)))
+            self.perctransm.append((self.transm[i]-min(self.transm)) / (max(self.transm)-min(self.transm)))
+            self.perctransminv.append(1-((self.transm[i]) / (max(self.transm))))
 
             ##    def __removebounds__(self, x, y):
             ##        self.yadjust = list(y)
@@ -133,7 +135,7 @@ class spectrafrominf:
         elif a == 'y':
             return self.transm
         elif a == 'yadjusted':
-            return self.perctransm
+            return self.transm
         elif a == 'xadjusted':
             return self.waverg
 

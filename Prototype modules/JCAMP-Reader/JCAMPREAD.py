@@ -1,3 +1,5 @@
+
+
 import os
 import sys
 import math
@@ -16,11 +18,15 @@ class extractspectra:
     def findnumericdata(self):
         self.linearray = []
         self.numericline = []
+        self.textarray=[]
         for self.line in self.infile: #Find only numberic entries and generate
             if self.line[0].isdigit():
                 self.numericline.append(self.line)
+            elif "=" in self.line:
+                self.textarray.append(self.line.split('=', 1)[1].strip())
         for i in range(len(self.numericline)):
             self.linearray.append(self.numericline[i].split())
+        print self.textarray
     def splitxy(self):
         self.x =[]
         self.y =[]
@@ -34,8 +40,8 @@ class extractspectra:
             for a in range(len(self.yentries[i])):
                 self.sum += float(self.yentries[i][a])
             self.y.append(round(self.sum/len(self.yentries[i]),3))
-        for i in range(len(self.y)):
-            print self.x[i], self.y[i]
+        #for i in range(len(self.y)):
+            #print self.x[i], self.y[i]
         plot.plot(self.x,self.y)
         plot.show()
 

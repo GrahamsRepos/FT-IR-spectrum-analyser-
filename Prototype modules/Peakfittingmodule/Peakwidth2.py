@@ -252,8 +252,8 @@ for i in range(len(xwavenummin_1)):
 abcd=calculate()
 cde = testfit()
 for i in range(len(xwavenummin_2)):
-    fitminima(xwavenummin_2[i],5,"lorentzian")
-    fitminima(xwavenummin_2[i],5,"gaussian")
+    fitminima(xwavenummin_2[i],10,"lorentzian")
+    fitminima(xwavenummin_2[i],10,"gaussian")
 
 
 plt.plot(abcd.returnresults("spectra","x"),abcd.returnresults("spectra","y"),'b',linewidth=1)
